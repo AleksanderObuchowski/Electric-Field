@@ -1,41 +1,127 @@
+function arrow( x1,  y1,  x2,  y2) {
+  line(x1, y1, x2, y2);
+  push();
+  translate(x2, y2);
+  var a = atan2(x1-x2, y2-y1);
+  rotate(a);
+  line(0, 0, -5, -5);
+  line(0, 0, 5, -5);
+  pop();
+} 
+
+
 
 
 function drawLines(length){
-	for(var i=0; i<10000; i++)
+	
+	var x,y,dx,dy,E1x,E1y,dxn,dyn,d2,E2,E2x,E2y,EEx,EEy,EE,deltax,deltay;
+	for(var i=0; i<4000; i++)
 {
-		var x,y;
+	
 
 		x=random(width);
 		y=random(height);
-		var dx=x-c1.x;
-		var dy=y-c1.y;
-		var d1=sqrt(dx*dx+dy*dy);
-		var E1=c1.v/(d1*d1);
-		var E1x=dx*E1/d1;
-		var E1y=dy*E1/d1;
+		 dx=x-c1.x;
+		 dy=y-c1.y;
+		 d1=sqrt(dx*dx+dy*dy);
+		 E1=c1.v/(d1*d1);
+		 E1x=dx*E1/d1;
+		 E1y=dy*E1/d1;
 
-		var dxn=x-c2.x;
-		var dyn=y-c2.y;
-		var d2=sqrt(dxn*dxn+dyn*dyn);
-		var E2=c2.v/(d2*d2);
-		var E2x=dxn*E2/d2;
-		var E2y=dyn*E2/d2;
+		 dxn=x-c2.x;
+		 dyn=y-c2.y;
+		 d2=sqrt(dxn*dxn+dyn*dyn);
+		 E2=c2.v/(d2*d2);
+		 E2x=dxn*E2/d2;
+		 E2y=dyn*E2/d2;
 
-		var EEx=E1x+E2x;
-		var EEy=E1y+E2y;
-		var EE=sqrt(EEx*EEx+EEy*EEy);
+		 EEx=E1x+E2x;
+		 EEy=E1y+E2y;
+		 EE=sqrt(EEx*EEx+EEy*EEy);
 
-		var deltax=length*EEx/EE;
-		var deltay=length*EEy/EE;
+		 deltax=length*EEx/EE;
+		 deltay=length*EEy/EE;
 
 		stroke(0,70);
-		line(x,y,x+deltax,y+deltay);
+		line(x,y,x+deltax,y+deltay)
 
 
 }
 
+
+}
+function drawGrains(length){
+	
+	var x,y,dx,dy,E1x,E1y,dxn,dyn,d2,E2,E2x,E2y,EEx,EEy,EE,deltax,deltay;
+	for(var i=0; i<4000; i++)
+{
+	
+		 x=noise(i)*width
+		 y=noise(8000-i)*height
+		 
+		 
+		 dx=x-c1.x;
+		 dy=y-c1.y;
+		 d1=sqrt(dx*dx+dy*dy);
+		 E1=c1.v/(d1*d1);
+		 E1x=dx*E1/d1;
+		 E1y=dy*E1/d1;
+
+		 dxn=x-c2.x;
+		 dyn=y-c2.y;
+		 d2=sqrt(dxn*dxn+dyn*dyn);
+		 E2=c2.v/(d2*d2);
+		 E2x=dxn*E2/d2;
+		 E2y=dyn*E2/d2;
+
+		 EEx=E1x+E2x;
+		 EEy=E1y+E2y;
+		 EE=sqrt(EEx*EEx+EEy*EEy);
+
+		 deltax=length*EEx/EE;
+		 deltay=length*EEy/EE;
+
+		stroke(0,70);
+		line(x,y,x+deltax,y+deltay)
+
+
 }
 
+
+}
+function drawArrows(length){
+	
+	var x,y,dx,dy,E1x,E1y,dxn,dyn,d2,E2,E2x,E2y,EEx,EEy,EE,deltax,deltay;
+	for(var i=0; i<1000; i+50)
+
+		 x=random(0,width)
+		 y=random(0,height)
+		 dx=x-c1.x;
+		 dy=y-c1.y;
+		 d1=sqrt(dx*dx+dy*dy);
+		 E1=c1.v/(d1*d1);
+		 E1x=dx*E1/d1;
+		 E1y=dy*E1/d1;
+
+		 dxn=x-c2.x;
+		 dyn=y-c2.y;
+		 d2=sqrt(dxn*dxn+dyn*dyn);
+		 E2=c2.v/(d2*d2);
+		 E2x=dxn*E2/d2;
+		 E2y=dyn*E2/d2;
+
+		 EEx=E1x+E2x;
+		 EEy=E1y+E2y;
+		 EE=sqrt(EEx*EEx+EEy*EEy);
+
+		 deltax=length*EEx/EE;
+		 deltay=length*EEy/EE;
+    strokeWeight(1);
+		stroke(0,80);
+		arrow(x,y,x+deltax,y+deltay);
+
+
+}
 
 
 function Charge(x,y,v){
@@ -95,8 +181,18 @@ function drawing() {
 		line(i,0,i,height);
 		line(0,i,width,i);
 		}
+		if(mode ==1 || mode==2){
 		drawLines(15);
-
+		}
+		if(mode ==3){
+		  drawArrows(10);
+		  
+		}
+		if(mode ==4){
+		  drawGrains(15);
+		  
+		  
+		}
 	c1.display();
 	c2.display();
 }
@@ -104,13 +200,35 @@ function fstatic() {
 mode=1;
 bstatic.style("background:#cccacc;");
 banimation.style("background: #a3a3a3;");
-
+barrows.style("background:#a3a3a3;")
+bgrains.style("background:#a3a3a3;");
+drawing()
+  
 }
 function fanimation() {
 mode=2;
-bstatic.style("background: #a3a3a3;;");
+bstatic.style("background: #a3a3a3;");
 banimation.style("background:#cccacc; ");
-
+barrows.style("background:#a3a3a3;");
+bgrains.style("background:#a3a3a3;");
+drawing()
+  
+}
+function farrows() {
+mode=3;
+bstatic.style("background: #a3a3a3;;");
+banimation.style("background:#a3a3a3; ");
+barrows.style("background:#cccacc;");
+bgrains.style("background:#a3a3a3;");
+drawing()
+}
+function fgrains() {
+mode=4;
+bstatic.style("background: #a3a3a3;;");
+banimation.style("background:#a3a3a3; ");
+barrows.style("background:#a3a3a3;");
+bgrains.style("background:#cccacc;");
+drawing()
 }
 var mode = 2
 var canvas;
@@ -156,6 +274,21 @@ function setup() {
 	banimation.class('btn');
 	banimation.mouseClicked(fanimation)
   banimation.style("background:#cccacc; ");
+  
+  		//BUTTON ARROWS
+  barrows = createButton('arrows');
+	barrows.parent("canvas");
+	barrows.id('arrows');
+	barrows.class('btn');
+	barrows.mouseClicked(farrows)
+	
+	  		//BUTTON GRAINS
+  bgrains = createButton('grains');
+	bgrains.parent("canvas");
+	bgrains.id('grains');
+	bgrains.class('btn');
+	bgrains.mouseClicked(fgrains);
+  
 
   c1 = new Charge(100,height/3,0);
   c2 = new Charge(width-100,height/3,0);
