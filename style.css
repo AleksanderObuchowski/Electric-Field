@@ -69,14 +69,17 @@ top:0;
 
 }
 #animation{
-border-radius: 0px;
+border-radius: 1px;
 
 }
 #arrows{
 border-radius: 0px;
 
 }
+#grains{
+border-radius: 0px;
 
+}
 
 
 
@@ -173,19 +176,24 @@ input[type=range]:focus::-ms-fill-upper {
   background: #8CA7A8;
 }
 .btn {
-  text-shadow: 1px 1px 3px #666666;
-  border-radius: 0px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
-  background: #a3a3a3;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-}
+  background-color:#ababab;
+  border:2px solid #727570;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:24px;
+  padding:8px 17px;
+  text-decoration:none;
+  text-shadow:1px 0px 7px #000000;
 
+}
 .btn:hover {
-
-  background: #e0e0e0;
-  text-decoration: none;
+  background-color:#dbdeda;
+}
+.btn:active {
+  position:relative;
+  top:1px;
 }
 
+        

@@ -14,7 +14,7 @@ function arrow( x1,  y1,  x2,  y2) {
 
 function drawLines(length){
 	
-	var x,y,dx,dy,E1x,E1y,dxn,dyn,d2,E2,E2x,E2y,EEx,EEy,EE,deltax,deltay;
+
 	for(var i=0; i<4000; i++)
 {
 	
@@ -52,7 +52,7 @@ function drawLines(length){
 }
 function drawGrains(length){
 	
-	var x,y,dx,dy,E1x,E1y,dxn,dyn,d2,E2,E2x,E2y,EEx,EEy,EE,deltax,deltay;
+
 	for(var i=0; i<4000; i++)
 {
 	
@@ -91,11 +91,13 @@ function drawGrains(length){
 }
 function drawArrows(length){
 	
-	var x,y,dx,dy,E1x,E1y,dxn,dyn,d2,E2,E2x,E2y,EEx,EEy,EE,deltax,deltay;
-	for(var i=0; i<1000; i+50)
+	
+	for(var i=0; i<1000; i+=30)
+{
+	for (var j=0;j<height;j+=30){
 
-		 x=random(0,width)
-		 y=random(0,height)
+		x=i;
+		y=j;
 		 dx=x-c1.x;
 		 dy=y-c1.y;
 		 d1=sqrt(dx*dx+dy*dy);
@@ -116,13 +118,15 @@ function drawArrows(length){
 
 		 deltax=length*EEx/EE;
 		 deltay=length*EEy/EE;
-    strokeWeight(1);
-		stroke(0,80);
+    strokeWeight(2)
+		stroke(0,70);
 		arrow(x,y,x+deltax,y+deltay);
 
 
 }
+}
 
+}
 
 function Charge(x,y,v){
   this.x=x;
@@ -185,11 +189,11 @@ function drawing() {
 		drawLines(15);
 		}
 		if(mode ==3){
-		  drawArrows(10);
+		  drawArrows(15);
 		  
 		}
 		if(mode ==4){
-		  drawGrains(15);
+		  drawGrains(35);
 		  
 		  
 		}
@@ -238,7 +242,7 @@ var check=false,anim=true, stat=false;
 var Slider1;
 var text1;
 var text2;
-
+var x,y,dx,dy,E1x,E1y,dxn,dyn,d2,E2,E2x,E2y,EEx,EEy,EE,deltax,deltay;
 function setup() {
   canvas = createCanvas(1000, 700);
   canvas.parent("canvas");
