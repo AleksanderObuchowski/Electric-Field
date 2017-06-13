@@ -15,7 +15,7 @@ function arrow( x1,  y1,  x2,  y2) {
 function drawLines(length){
 	
 
-	for(var i=0; i<4000; i++)
+	for(var i=0; i<5000; i++)
 {
 	
 
@@ -156,7 +156,7 @@ function Charge(x,y,v){
 
 }
   this.move =function(){
-	  if(mouseX>this.x-7.5 && mouseX<this.x+7.5 && mouseY>this.y-7.5 && mouseY<this.y+7.5 && mouseIsPressed){
+	  if(mouseX>this.x-7.5 && mouseX<this.x+7.5 && mouseY>this.y-7.5 && mouseY<this.y+7.5 && mouseIsPressed && !c1.moved && !c2.moved){
   	  this.moved=true;
 
 	}
@@ -189,11 +189,11 @@ function drawing() {
 		drawLines(15);
 		}
 		if(mode ==3){
-		  drawArrows(15);
+		  drawArrows(20);
 		  
 		}
 		if(mode ==4){
-		  drawGrains(35);
+		  drawGrains(15);
 		  
 		  
 		}
@@ -202,36 +202,36 @@ function drawing() {
 }
 function fstatic() {
 mode=1;
-bstatic.style("background:#cccacc;");
-banimation.style("background: #a3a3a3;");
-barrows.style("background:#a3a3a3;")
-bgrains.style("background:#a3a3a3;");
+bstatic.style("background: rgba(0, 0, 0, 0.5);");
+banimation.style("background: rgba(0, 0, 0, 0.2);");
+barrows.style("background: rgba(0, 0, 0, 0.2);")
+bgrains.style("background: rgba(0, 0, 0, 0.2);");
 drawing()
   
 }
 function fanimation() {
 mode=2;
-bstatic.style("background: #a3a3a3;");
-banimation.style("background:#cccacc; ");
-barrows.style("background:#a3a3a3;");
-bgrains.style("background:#a3a3a3;");
+bstatic.style("background: rgba(0, 0, 0, 0.2);");
+banimation.style("background: rgba(0, 0, 0, 0.5); ");
+barrows.style("background: rgba(0, 0, 0, 0.2);");
+bgrains.style("background: rgba(0, 0, 0, 0.2);");
 drawing()
   
 }
 function farrows() {
 mode=3;
-bstatic.style("background: #a3a3a3;;");
-banimation.style("background:#a3a3a3; ");
-barrows.style("background:#cccacc;");
-bgrains.style("background:#a3a3a3;");
+bstatic.style("background: rgba(0, 0, 0, 0.2);");
+banimation.style("background: rgba(0, 0, 0, 0.2);");
+barrows.style("background: rgba(0, 0, 0, 0.5);");
+bgrains.style("background: rgba(0, 0, 0, 0.2);");
 drawing()
 }
 function fgrains() {
 mode=4;
-bstatic.style("background: #a3a3a3;;");
-banimation.style("background:#a3a3a3; ");
-barrows.style("background:#a3a3a3;");
-bgrains.style("background:#cccacc;");
+bstatic.style("background: rgba(0, 0, 0, 0.2);;");
+banimation.style("background: rgba(0, 0, 0, 0.2);");
+barrows.style("background: rgba(0, 0, 0, 0.2);");
+bgrains.style("background: rgba(0, 0, 0, 0.5);");
 drawing()
 }
 var mode = 2
@@ -243,9 +243,14 @@ var Slider1;
 var text1;
 var text2;
 var x,y,dx,dy,E1x,E1y,dxn,dyn,d2,E2,E2x,E2y,EEx,EEy,EE,deltax,deltay;
+
+
+
+
 function setup() {
   canvas = createCanvas(1000, 700);
   canvas.parent("canvas");
+  canvas.id("sketch");
 
 	//SILDER 1
 
@@ -277,7 +282,7 @@ function setup() {
 	banimation.id('animation');
 	banimation.class('btn');
 	banimation.mouseClicked(fanimation)
-  banimation.style("background:#cccacc; ");
+  banimation.style("background: rgba(0, 0, 0, 0.5); ");
   
   		//BUTTON ARROWS
   barrows = createButton('arrows');
