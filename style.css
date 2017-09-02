@@ -52,7 +52,17 @@ border-radius: 5px;
 color: white;
 float: left;
 }
-
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background:url(Preloade.gif) center no-repeat #fff;
+}
 
 #C2{
 width: 48%;
@@ -82,8 +92,14 @@ left: -2px;
 #grains{
 
 outline: none;
-border-radius: 0px 0px 10px 0px; 
+border-radius: 0px; 
 left: -3px;
+}
+#lines{
+
+outline: none;
+border-radius: 0px 0px 10px 0px; 
+left: -4px;
 }
 #sketch{
 border: 1px solid black;
